@@ -112,7 +112,7 @@ onMounted(() => {
         >h2{
             text-align:center;
             font-size:24px;
-            font-family: "kt";
+            font-family: "楷体", "KaiTi", "STKaiti";
         }
         .item{
             width:100%;
