@@ -61,7 +61,7 @@ const getResourceList = (type) => {
         }
     })
 }
-onMounted(() => {
+onMounted(async() => {
      getResourceList('学习文档');
      getResourceList('在线工具');
      getResourceList('资源下载');

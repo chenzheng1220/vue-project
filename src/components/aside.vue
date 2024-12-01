@@ -1,7 +1,7 @@
 <template>
     <aside>
-        <div class="setting">
-            <img class="avatar" :src="settings.avatar" />
+        <div class="setting" v-loading="load">
+            <img class="avatar" :src="settings.avatar"/>
             <h2 class="author">{{ settings.author }}</h2>
             <p class="introduction">{{ settings.introduction }}</p>
             <div class="total">
@@ -56,6 +56,7 @@
     const categoryTotal = ref(0);
     const tagsTotal = ref(0);
     const isShow = ref(false);
+    const load = ref(false);
     const props = defineProps({
         editorId: String,
         scrollElement: Object,
@@ -72,26 +73,29 @@
 
  
     
-    onMounted(() => {
-        route.query.id ? isShow.value = true : isShow.value = false;
-        axios.post('/getArticleCategoryStatistics').then(res => {
-            categoryList.value = res.data.list;
-            categoryTotal.value = res.data.list.length;
-            articleTotal.value = res.data.list.reduce((acc,item) => acc + item.value,0);
-        })
-        fetch('/api/getSettingsDetail',{
+    onMounted(async() => {
+        load.value = true;
+        await fetch('/api/getSettingsDetail',{
             method:'post'
         }).then(response => response.json()).then(res => {
+            load.value = false;
             settings.avatar = res.data.avatar;
             settings.author = res.data.author;
             settings.introduction = res.data.introduction;
             settings.github = res.data.github;
         });
-        fetch('/api/getTagList',{
+        await axios.post('/getArticleCategoryStatistics').then(res => {
+            categoryList.value = res.data.list;
+            categoryTotal.value = res.data.list.length;
+            articleTotal.value = res.data.list.reduce((acc,item) => acc + item.value,0);
+        })
+      
+        await fetch('/api/getTagList',{
             method:'post'
         }).then(response => response.json()).then(res => {
             tagsTotal.value = res.list.length;
         })
+        route.query.id ? isShow.value = true : isShow.value = false;
     })
 </script>
 
@@ -114,8 +118,11 @@
             .avatar{
                 display:block;
                 width:100px;
+                height:100px;
+                object-fit: cover;
                 border-radius:50%;
                 margin:0 auto;
+                background-color:#c6c6c6;
             }
             .author{
                 text-align: center;

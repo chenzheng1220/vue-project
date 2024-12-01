@@ -1,8 +1,8 @@
 <template>
-  <div class="index">
+  <div class="index" v-loading="load">
     <div class="item" v-for="(item,index) in articleList" :key="index" @click="goToArticle(item)">
       <div class="artCover">
-        <img :src="item.articleCover" />
+        <img :src="item.articleCover" loading='lazy' alt="封面" />
       </div>
       <div class="text">
         <h2 class="title">{{ item.title }}</h2>
@@ -43,14 +43,16 @@
     keyword:''
   })
   const total = ref(null);
+  const load = ref(false);
   const articleList = ref([]);
- 
   const handleChange = (val) => {
     state.pageNumber = val; 
     getArticleList();
   }
   const getArticleList = () => {
+    load.value = true;
     axios.post('/getArticleList',state).then(res => {
+      load.value = false;
       articleList.value = res.data.list;
       total.value = res.data.totalNum;
     });
@@ -130,8 +132,8 @@
           text-overflow:ellipsis;
           -webkit-line-clamp:2;
           -webkit-box-orient:vertical;
-          font-size:16px;
           line-height:1.6em;
+          font-size:16px;
           color:#606266;
         }
         .tag{
