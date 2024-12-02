@@ -2,7 +2,11 @@
   <div class="container">
     <Header></Header>
     <div class="content">
-        <router-view />
+       <router-view v-slot="{Component}">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+       </router-view>
     </div>
     <Footer></Footer>
   </div>
