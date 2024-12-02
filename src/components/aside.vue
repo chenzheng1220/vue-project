@@ -39,7 +39,7 @@
    
 </template>
 
-<script setup>
+<script setup name="">
     import {ref,reactive,onMounted} from 'vue';
     import axios from '@/utils';
     import {useRouter,useRoute} from 'vue-router';

@@ -2,10 +2,11 @@
   <div class="container">
     <Header></Header>
     <div class="content">
-       <router-view v-slot="{Component}">
+       <router-view v-slot="{Component,route}">
           <keep-alive>
-            <component :is="Component" />
+            <component v-if="route.meta.keepAlive" :key="route.name" :is="Component" />
           </keep-alive>
+          <component v-if="!route.meta.keepAlive" :key="route.name" :is="Component" />
        </router-view>
     </div>
     <Footer></Footer>
@@ -15,7 +16,6 @@
 import { RouterLink, RouterView} from 'vue-router';
 import Header from './components/header.vue';
 import Footer from './components/footer.vue';
-
 
 </script>
 <style lang="scss">
