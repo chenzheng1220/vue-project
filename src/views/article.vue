@@ -1,11 +1,11 @@
 <template>
-    <div class="article">
+    <div class="article" v-loading="load">
       <div class="article-head item">
         <h1 class="title">{{ article.title }}</h1>
         <div class="tag">
-            <el-tooltip content="发布时间" placement="bottom" offset="0"><span><el-icon><Calendar /></el-icon> {{ article.releaseTime }}</span></el-tooltip>
-            <el-tooltip content="文章标签" placement="bottom" offset="0"> <span v-if="article.tag"><el-icon><CollectionTag /></el-icon><label v-for="name in article.tag">{{ name }}</label></span></el-tooltip>
-            <el-tooltip content="阅读量" placement="bottom" offset="0"><span><el-icon><View /></el-icon>{{ article.views }}</span></el-tooltip>
+            <el-tooltip content="发布时间" :offset=0><span><el-icon><Calendar /></el-icon> {{ article.releaseTime }}</span></el-tooltip>
+           <span v-if="article && article.tag"><el-icon><CollectionTag /></el-icon><label v-for="name in article?.tag">{{ name }}</label></span>
+            <el-tooltip content="阅读量" :offset=0><span><el-icon><View /></el-icon>{{ article.views }}</span></el-tooltip>
         </div>
       </div>
 
@@ -35,19 +35,19 @@ const id = 'preview-only';
 const mdEditor = ref('');
 const scrollElement = ref(document.documentElement);
 const route = useRoute();
+const load = ref(false);
 const article = ref({});
-const content = ref('');
-const getArticle = (id) => {
-    axios.get(`/getArticle?id=${id}`).then(res => {
+const getArticle = async(id) => {
+    load.value = true;
+    await axios.get(`/getArticle?id=${id}`).then(res => {
+        load.value = false;
         article.value = res.data.data;
-        article.value.content = res.data.data.content;
-        content.value = res.data.data.content;
         mdEditor.value = res.data.data.content;
     })
 }
-onMounted(() => {
+onMounted(async() => {
     let id = route.query.id || '';
-    getArticle(id);
+    await getArticle(id);
 
 })
 </script>

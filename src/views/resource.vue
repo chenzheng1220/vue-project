@@ -1,5 +1,5 @@
 <template>
-    <div class="resource">
+    <div class="resource" v-loading="load">
         <div class="item">
             <h2>学习文档</h2>
             <div class="wrap">
@@ -39,15 +39,19 @@ const list1 = ref([]);
 const list2 = ref([]);
 const list3 = ref([]);
 const list4 = ref([]);
+const load = ref(false);
 const state = reactive({
     pageNumber:1,
     pageSize:50,
     selectType:''
 })
-const getResourceList = (type) => {
+const getResourceList = async(type) => {
+    load.value = true;
     state.selectType = type;
-     axios.post('/getResourceList',state).then(res => {
+     await axios.post('/getResourceList',state).then(res => {
+        load.value = false
         if(type === '学习文档'){
+            
             list1.value = res.data.list;
         }
         if(type === '在线工具'){
@@ -56,16 +60,17 @@ const getResourceList = (type) => {
         if(type === '资源下载'){
             list3.value = res.data.list;
         }
-        if(type === '优秀博主'){
+        if(type === '技术博主'){
+           
             list4.value = res.data.list;
         }
     })
 }
 onMounted(async() => {
-     getResourceList('学习文档');
-     getResourceList('在线工具');
-     getResourceList('资源下载');
-     getResourceList('优秀博主');
+    getResourceList('学习文档');
+    getResourceList('在线工具');
+    getResourceList('资源下载');
+    getResourceList('技术博主');
 })
 </script>
 

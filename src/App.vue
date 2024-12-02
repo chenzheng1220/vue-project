@@ -2,10 +2,7 @@
   <div class="container">
     <Header></Header>
     <div class="content">
-      <keep-alive>
         <router-view />
-      </keep-alive>
-     
     </div>
     <Footer></Footer>
   </div>

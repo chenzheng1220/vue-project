@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="about" v-loading="load">
         <MdPreview editorId="editor" :modelValue="mdEditor" />
     </div>
     <Aside />
@@ -11,12 +11,13 @@ import Aside from '@/components/aside.vue';
 import { MdPreview} from 'md-editor-v3';
 import 'md-editor-v3/lib/preview.css';
 const mdEditor = ref('');
-onMounted(() => {
-    fetch('/api/getSettingsDetail',{
-        method:'post'
-    }).then(response => response.json()).then(res => {
+const load = ref(false);
+onMounted(async() => {
+    load.value = true;
+    await fetch('/api/getSettingsDetail',{method:'get'}).then(response => response.json()).then(res => {
+        load.value = false;
         mdEditor.value = res.data.about;
-        console.log(res)
+       
     })
 })
 </script>

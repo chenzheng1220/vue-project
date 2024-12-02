@@ -1,5 +1,5 @@
 <template>
-    <div class="file">
+    <div class="file" v-loading="load">
         <div class="item" v-for="(item,index) in list">
             <h2>{{ item.date }}</h2>
             <div class="wrap">
@@ -16,13 +16,16 @@ import {useRouter} from 'vue-router';
 import axios from '@/utils';
 import {ref,onMounted} from 'vue';
 const router = useRouter();
+const load = ref(false);
 const list = ref([]);
 
 const goToArticle = (val) => {
     router.push({path:'/article',query:{id:val}});
 }
-onMounted(() => {
-    axios.post('/getFileList').then(res => {
+onMounted(async() => {
+    load.value = true;
+    await axios.get('/getFileList').then(res => {
+        load.value = false;
         list.value = res.data.list;
     })
 })

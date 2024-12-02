@@ -1,4 +1,5 @@
 <template>
+
     <aside>
         <div class="setting" v-loading="load">
             <img class="avatar" :src="settings.avatar"/>
@@ -34,6 +35,7 @@
             <MdCatalog :editorId="editorId" :scrollElement="scrollElement" :scrollElementOffsetTop="scrollElementOffsetTop" :offsetTop="offsetTop" />
         </div>
     </aside>
+
    
 </template>
 
@@ -73,28 +75,25 @@
 
  
     
-    onMounted(async() => {
+    onMounted(() => {
         load.value = true;
-        await fetch('/api/getSettingsDetail',{
-            method:'post'
-        }).then(response => response.json()).then(res => {
-            load.value = false;
+        fetch('/api/getSettingsDetail',{method:'get'}).then(response => response.json()).then(res => {
+             load.value = false;
             settings.avatar = res.data.avatar;
             settings.author = res.data.author;
             settings.introduction = res.data.introduction;
             settings.github = res.data.github;
         });
-        await axios.post('/getArticleCategoryStatistics').then(res => {
+       fetch('/api/getTagList',{method:'get'}).then(response => response.json()).then(res => {
+           tagsTotal.value = res.list.length;
+        })
+        axios.get('/getArticleCategoryStatistics').then(res => {
             categoryList.value = res.data.list;
             categoryTotal.value = res.data.list.length;
             articleTotal.value = res.data.list.reduce((acc,item) => acc + item.value,0);
         })
       
-        await fetch('/api/getTagList',{
-            method:'post'
-        }).then(response => response.json()).then(res => {
-            tagsTotal.value = res.list.length;
-        })
+     
         route.query.id ? isShow.value = true : isShow.value = false;
     })
 </script>

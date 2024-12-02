@@ -2,7 +2,7 @@
   <div class="index" v-loading="load">
     <div class="item" v-for="(item,index) in articleList" :key="index" @click="goToArticle(item)">
       <div class="artCover">
-        <img :src="item.articleCover" loading='lazy' alt="封面" />
+        <img :src="item.articleCover" />
       </div>
       <div class="text">
         <h2 class="title">{{ item.title }}</h2>
@@ -18,10 +18,12 @@
     <div class="page">
       <el-pagination
       background
-      layout="prev,pager,next"
-      :current-page="state.pageNumber"
+      layout="total, sizes, prev, pager, next, jumper"
+      v-model:current-page="state.pageNumber"
+      v-model:page-size="state.pageSize"
       :page-size="state.pageSize"
-      @current-change="handleChange"
+      @update:current-page="handleChange"
+      @size-change="handleSizeChange"
       :total = total
       />
     </div>
@@ -37,40 +39,46 @@
   import {useRouter,useRoute} from 'vue-router';
   const router = useRouter();
   const route = useRoute();
+  const load = ref(false);
   const state = reactive({
     pageNumber:1,
     pageSize:12,
     keyword:''
   })
-  const total = ref(null);
-  const load = ref(false);
+  const total = ref(0);
   const articleList = ref([]);
-  const handleChange = (val) => {
+ 
+  const handleChange = async(val) => {
     state.pageNumber = val; 
-    getArticleList();
+    await getArticleList();
   }
-  const getArticleList = () => {
+
+  const handleSizeChange = async(val) => {
+    state.pageSize = val;
+    await getArticleList();
+  }
+  const getArticleList = async() => {
     load.value = true;
-    axios.post('/getArticleList',state).then(res => {
+    await axios.post('/getArticleList',state).then(res => {
       load.value = false;
       articleList.value = res.data.list;
       total.value = res.data.totalNum;
     });
   }
 
-  const getCategoryName = (val) => {
+  const getCategoryName = async(val) => {
     state.keyword = val || '';
-    getArticleList();
+    await getArticleList();
   }
 
   const goToArticle = (val) => {
     router.push({path:'/article',query:{id:val.id}});
   }
 
-  onMounted(() => {
+  onMounted(async() => {
 
     let name = route.query.name || '';
-    getCategoryName(name);
+    await getCategoryName(name);
   
   })
 
@@ -132,8 +140,8 @@
           text-overflow:ellipsis;
           -webkit-line-clamp:2;
           -webkit-box-orient:vertical;
-          line-height:1.6em;
           font-size:16px;
+          line-height:1.6em;
           color:#606266;
         }
         .tag{
