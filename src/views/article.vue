@@ -46,6 +46,7 @@ const getArticle = async(id) => {
     })
 }
 onMounted(async() => {
+    
     let id = route.query.id || '';
     await getArticle(id);
 

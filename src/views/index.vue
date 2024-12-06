@@ -76,7 +76,6 @@
   }
 
   onMounted(async() => {
-
     let name = route.query.name || '';
     await getCategoryName(name);
   
