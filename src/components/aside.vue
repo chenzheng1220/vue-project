@@ -32,7 +32,7 @@
 
         <div class="catalog" v-if="isShow">
             <h2><el-icon><List /></el-icon>文章目录</h2>
-            <MdCatalog :editorId="editorId" :scrollElement="scrollElement" :scrollElementOffsetTop="scrollElementOffsetTop" :offsetTop="offsetTop" />
+            <MdCatalog :editorId="editorId" :scrollElement="scrollElement" :scrollElementOffsetTop="100" :offsetTop="200" />
         </div>
     </aside>
 
@@ -40,7 +40,7 @@
 </template>
 
 <script setup name="">
-    import {ref,reactive,onMounted} from 'vue';
+    import {ref,reactive,onMounted,watch} from 'vue';
     import axios from '@/utils';
     import {useRouter,useRoute} from 'vue-router';
     import { MdCatalog } from 'md-editor-v3'; 
@@ -48,6 +48,8 @@
     const router = useRouter();
     const route = useRoute();
     const categoryList = ref([]);
+    const editorId = 'preview-only';
+    const scrollElement = ref(document.documentElement);
     const settings = reactive({
         avatar:'',
         author:'',
@@ -59,23 +61,18 @@
     const tagsTotal = ref(0);
     const isShow = ref(false);
     const load = ref(false);
-    const props = defineProps({
-        editorId: String,
-        scrollElement: Object,
-        scrollElementOffsetTop:Number,
-        offsetTop:Number
-    });
- 
+   
     const emit = defineEmits(['updateValue']);
     const handleClick = (val) => {
         router.push({path:'/index',query:{name:val.name}});
-        emit('updateValue',val.name);
-
     }
 
- 
+    watch(() => route.path,(newVal) => {
+        newVal === '/article' ? isShow.value = true : isShow.value = false;
+    })
     
     onMounted(() => {
+        window.scrollTo(0,0);
         load.value = true;
         fetch('/api/getSettingsDetail',{method:'get'}).then(response => response.json()).then(res => {
              load.value = false;
@@ -93,8 +90,7 @@
             articleTotal.value = res.data.list.reduce((acc,item) => acc + item.value,0);
         })
       
-     
-        route.query.id ? isShow.value = true : isShow.value = false;
+      
     })
 </script>
 

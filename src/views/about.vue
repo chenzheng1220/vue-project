@@ -2,12 +2,10 @@
     <div class="about" v-loading="load">
         <MdPreview editorId="editor" :modelValue="mdEditor" />
     </div>
-    <Aside />
 </template>
 
 <script setup>
 import {ref,onMounted} from 'vue';
-import Aside from '@/components/aside.vue';
 import { MdPreview} from 'md-editor-v3';
 import 'md-editor-v3/lib/preview.css';
 const mdEditor = ref('');
@@ -24,7 +22,7 @@ onMounted(async() => {
 
 <style lang="scss">
     .about{
-        flex:1;
+        width:100%;
         background-color:#ffffff;
         padding:0 30px 50px;
         h3{

@@ -57,6 +57,8 @@
     window.location.reload(true);
   }
 
+ 
+
 </script>
 
 <style lang="scss">

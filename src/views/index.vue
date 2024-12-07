@@ -29,17 +29,18 @@
     </div>
     
   </div>
-  <Aside @updateValue="getCategoryName" />
+  <!-- <Aside @updateValue="getCategoryName" /> -->
 </template>
 
 <script setup>
-  import {ref,reactive,onMounted,toRefs,inject} from 'vue';
+  import {ref,reactive,onMounted,toRefs,inject,watch} from 'vue';
   import Aside from '@/components/aside.vue';
   import axios from '@/utils';
   import {useRouter,useRoute} from 'vue-router';
   const router = useRouter();
   const route = useRoute();
   const load = ref(false);
+  const query = ref(route.query.name);
   const state = reactive({
     pageNumber:1,
     pageSize:12,
@@ -75,9 +76,17 @@
     router.push({path:'/article',query:{id:val.id}});
   }
 
+  watch(() => route.query.name, async(newVal) => {
+    query.value = newVal;
+    await getCategoryName(query.value);
+    window.scrollTo(0,0);
+});
+
   onMounted(async() => {
+   
     let name = route.query.name || '';
     await getCategoryName(name);
+    window.scrollTo(0,0);
   
   })
 
@@ -85,7 +94,7 @@
 
 <style lang="scss">
   .index{
-    flex:1;
+    width:100%;
     .item{
       width:100%;
       margin:0 auto 12px;
@@ -99,8 +108,13 @@
       &:hover{
         box-shadow: 0 0 5px rgba(114, 124, 245, 0.5);
         img{
-        transform:scale(1.1);
-      }
+          transform:scale(1.1);
+        }
+        .text .title{
+          background-position-x: left;
+          background-size:100% 2px;
+        }
+      
       }
       cursor:pointer;
       .artCover{
@@ -125,12 +139,18 @@
         justify-content: space-around;
         
         .title{
+          width:fit-content;
           font-size:22px;
           font-weight:bold;
           overflow:hidden;
           text-overflow:ellipsis;
           white-space: nowrap;
           font-family:'楷体','KaiTi','STKaiti';
+          background-image: linear-gradient(to right, #0800fe, #00f92e);
+          background-repeat: no-repeat;
+          background-position: right bottom;
+          background-size:0 2px;
+          transition:background-size 1.2s;
         }
         .introduction{
           height:50px;

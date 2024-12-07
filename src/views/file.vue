@@ -7,11 +7,10 @@
             </div>
         </div>
     </div>
-    <Aside />
+  
 </template>
 
 <script setup>
-import Aside from '@/components/aside.vue';
 import {useRouter} from 'vue-router';
 import axios from '@/utils';
 import {ref,onMounted} from 'vue';
@@ -33,7 +32,7 @@ onMounted(async() => {
 
 <style lang="scss">
     .file{
-        flex:1;
+        width:100%;
         background-color: #ffffff;
         padding:30px;
         .item{

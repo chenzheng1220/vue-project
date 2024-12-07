@@ -28,11 +28,9 @@
             </div>
         </div>
     </div>
-    <Aside />
 </template>
 
 <script setup>
-import Aside from '@/components/aside.vue';
 import axios from '@/utils';
 import {ref,reactive, onMounted } from 'vue';
 const list1 = ref([]);
@@ -76,7 +74,7 @@ onMounted(async() => {
 
 <style lang="scss">
     .resource{
-        flex:1;
+        width:100%;
         .item{
             border: 1px solid #EBEDF0;
             padding:12px;
