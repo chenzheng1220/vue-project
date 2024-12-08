@@ -72,7 +72,7 @@
     })
     
     onMounted(() => {
-        window.scrollTo(0,0);
+       
         load.value = true;
         fetch('/api/getSettingsDetail',{method:'get'}).then(response => response.json()).then(res => {
              load.value = false;
