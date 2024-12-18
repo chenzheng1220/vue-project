@@ -27,7 +27,7 @@ import Footer from './components/footer.vue';
 .container{
   width:100%;
   .content{
-    width:1200px;
+    max-width:1200px;
     display:flex;
     margin:12px auto;
    .box{

@@ -104,7 +104,9 @@ header{
         padding: 0 1rem;
         border-left: 1px solid var(--color-border);
         color:$navTextColor;
-       
+       &:hover{
+        color: $navTextActColor;
+       }
       }
 
 

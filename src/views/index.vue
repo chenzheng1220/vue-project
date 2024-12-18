@@ -139,6 +139,7 @@
         justify-content: space-around;
         
         .title{
+          max-width: 720px;
           width:fit-content;
           font-size:22px;
           font-weight:bold;
