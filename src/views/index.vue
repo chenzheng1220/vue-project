@@ -18,7 +18,7 @@
     <div class="page">
       <el-pagination
       background
-      layout="total, sizes, prev, pager, next, jumper"
+      layout="prev, pager, next"
       v-model:current-page="state.pageNumber"
       v-model:page-size="state.pageSize"
       :page-size="state.pageSize"
@@ -26,6 +26,9 @@
       @size-change="handleSizeChange"
       :total = total
       />
+    </div>
+    <div>
+      
     </div>
     
   </div>
@@ -43,7 +46,7 @@
   const query = ref(route.query.name);
   const state = reactive({
     pageNumber:1,
-    pageSize:12,
+    pageSize:10,
     keyword:''
   })
   const total = ref(0);
