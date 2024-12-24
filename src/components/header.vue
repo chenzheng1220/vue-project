@@ -38,7 +38,7 @@
 <script setup>
   import {ref,onMounted} from 'vue';
   const isShow = ref(false);
-  const isMobile = ref(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+  const isMobile = ref(false);
   const toggleClass = () => {
 
     isShow.value = !isShow.value;
@@ -57,7 +57,13 @@
     window.location.reload(true);
   }
 
- 
+  const handleReSize = () => {
+    isMobile.value = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+  }
+
+  handleReSize();
+
+  window.addEventListener('resize',handleReSize);
 
 </script>
 
