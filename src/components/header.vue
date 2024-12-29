@@ -20,7 +20,7 @@
           <router-link to="/file">归档</router-link>
           <router-link to="/resource">在线资源</router-link>
           <router-link to="/about">关于博客</router-link>
-          <a href="http://lejibiji.cn/vue3-admin/login">开放式后台</a>
+          <a href="http://lejibiji.cn/vue3-admin/login" target="_blank">开放式后台</a>
         </nav>
        <transition name="el-zoom-in-top">
         <div class="menu" v-show="isShow">
