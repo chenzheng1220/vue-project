@@ -69,7 +69,7 @@ onMounted(async() => {
         text-align:center;
         .title{
             font-size:26px;
-            font-family: "kt",'楷体','KaiTi','STKaiti';
+            font-family:'楷体','KaiTi','STKaiti';
             overflow:hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -102,13 +102,13 @@ onMounted(async() => {
             font-size:24px;
             font-weight: bold;
             margin:12px 0;
-            font-family: "kt",'楷体','KaiTi','STKaiti';
+            font-family:'楷体','KaiTi','STKaiti';
         }
         h3{
             font-size:22px;
             font-weight:bold;
             margin:6px 0; 
-            font-family: "kt",'楷体','KaiTi','STKaiti';
+            font-family:'楷体','KaiTi','STKaiti';
         }
         p{
             font-size:16px;
