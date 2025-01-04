@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -49,4 +50,30 @@ const router = createRouter({
   ]
 })
 
+let startTime = Date.now();
+let currentTime = null;
+
+router.beforeEach(async(to,from,next) => {
+  if(to){
+    currentTime = Date.now();
+    let stayTime = ((currentTime - startTime) / 1000).toFixed(1);
+    startTime = Date.now();
+    const data = {
+      ip:localStorage.getItem('ip'),
+      event:'click',
+      type:'导航',
+      target:from.path,
+      stayTime:stayTime + 's'
+    }
+    await fetch('/api/track',{
+      method:'post',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(data)
+    });
+
+  }
+  next();
+})
 export default router

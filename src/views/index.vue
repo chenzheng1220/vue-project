@@ -1,6 +1,6 @@
 <template>
   <div class="index" v-loading="load">
-    <div class="item" v-for="(item,index) in articleList" :key="index" @click="goToArticle(item)">
+    <div class="item" v-for="(item,index) in articleList" :key="index" v-track="{type:'图文列表',target:item.title}" @click="goToArticle(item)">
       <div class="artCover">
         <img :src="item.articleCover" />
       </div>
