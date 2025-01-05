@@ -65,7 +65,7 @@ router.beforeEach(async(to,from,next) => {
       target:from.path,
       stayTime:stayTime + 's'
     }
-    await fetch('/api/track',{
+    const response = await fetch('/api/track',{
       method:'post',
       headers:{
         'Content-Type':'application/json'
