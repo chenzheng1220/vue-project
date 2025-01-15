@@ -4,7 +4,6 @@ export const appDirective  = app => {
             el.addEventListener('click',async() => {
                 console.log(binding)
                 const data = {
-                    ip:localStorage.getItem('ip'),
                     event:'click',
                     type:binding.value.type,
                     target:binding.value.target

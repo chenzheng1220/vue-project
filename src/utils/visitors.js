@@ -1,8 +1,8 @@
 import axios from 'axios';
+const isMobileDevice = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 const visitStats = {
-    ip:'',
-    city:'',
     platform:window.navigator.platform,
+    device:isMobileDevice() ? '移动端':'PC端',
     browser:'',
     screen:window.screen.width + ' * ' +  window.screen.height,
    }
@@ -25,16 +25,6 @@ if (userAgent.indexOf("Chrome") !== -1) {
 }
 
 const visitors = async() => {
-      try{
-        await fetch(`http://ip-api.com/json/?lang=zh-CN`).then(response => response.json()).then(data => {
-            visitStats.ip = data.query;
-            visitStats.city = data.city;
-            localStorage.setItem('ip',visitStats.ip);
-            localStorage.setItem('city',visitStats.city);
-        });
-      }catch(error){
-        throw error;
-      }
       await axios.post('/visitors',visitStats);
 }
 
