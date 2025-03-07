@@ -16,7 +16,7 @@
             </el-form-item>
           
             <el-form-item label="请输入评论内容" prop="content"> 
-                <el-input size="large" style="width:100%;" type="textarea" placeholder="请发表和文章内容相关的评论，评论发表后，审核通过后方能显示" v-model="state.ruleForm.content" />
+                <el-input v-autofocus size="large" style="width:100%;" type="textarea" placeholder="请发表和文章内容相关的评论，评论发表后，审核通过后方能显示" v-model="state.ruleForm.content" />
             </el-form-item>
 
             <el-form-item>

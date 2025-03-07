@@ -1,8 +1,8 @@
 <template>
   <div class="index" v-loading="load">
-    <div class="item" v-for="(item,index) in articleList" :key="index" v-track="{type:'图文列表',target:item.title}" @click="goToArticle(item)">
+    <div class="item" v-for="item in articleList" :key="item.id" v-track="{type:'图文列表',target:item.title}" @click="goToArticle(item)">
       <div class="artCover">
-        <img :src="item.articleCover" />
+        <img v-lazyload="item.articleCover" alt="articleCover" />
       </div>
       <div class="text">
         <h2 class="title">{{ item.title }}</h2>
@@ -27,6 +27,7 @@
       :total = total
       />
     </div>
+    <img v-draggable src="http://lejibiji.cn:8081/uploads/ced5ab49-ab07-4fe5-91c6-adbac2cc5e19-avatar.jpg"/>
     <div>
       
     </div>

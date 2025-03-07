@@ -2,6 +2,7 @@
     <div class="about" v-loading="load">
         <MdPreview editorId="editor" :modelValue="mdEditor" />
     </div>
+<div class="modal-overlay" ></div>
 </template>
 
 <script setup>
@@ -56,4 +57,6 @@ onMounted(async() => {
             }
         }
     }
+    .modal{width:100%;
+    height:100vh;background-color:red;}
 </style>

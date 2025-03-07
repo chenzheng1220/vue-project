@@ -1,9 +1,9 @@
 <template>
     <div class="file" v-loading="load">
-        <div class="item" v-for="(item,index) in list">
+        <div class="item" :index="item.date" v-for="(item,index) in list">
             <h2>{{ item.date }}</h2>
             <div class="wrap">
-                <p v-for="obj in item.articles" @click="goToArticle(obj.id)"><span>{{ obj.title }}</span> <span>[{{ obj.releaseTime }}]</span></p>
+                <p v-for="obj in item.articles" :index="obj.id" @click="goToArticle(obj.id)"><span>{{ obj.title }}</span> <span>[{{ obj.releaseTime }}]</span></p>
             </div>
         </div>
     </div>
@@ -26,6 +26,8 @@ onMounted(async() => {
     await axios.get('/getFileList').then(res => {
         load.value = false;
         list.value = res.data.list;
+        
+
     })
 })
 </script>
