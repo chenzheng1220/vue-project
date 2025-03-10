@@ -41,7 +41,7 @@ export const appDirective  = app => {
                 observer.unobserve(lazyImage);
               };
               lazyImage.onerror = () => {
-                lazyImage.src = '/default-image.png'; // 设置默认图片
+                lazyImage.src = '/lejibiji.png'; // 设置默认图片
               };
             }
           });
