@@ -8,24 +8,27 @@
         <h2 class="title">{{ item.title }}</h2>
         <p class="introduction">{{ item.introduction }}</p>
         <div class="tag">
-          <span><el-icon><Calendar /></el-icon> {{ item.releaseTime }}</span>
-          <span v-if="item.tag.length !== 0"><el-icon><CollectionTag /></el-icon><label v-for="name in item.tag">{{ name }}</label></span>
+          <span><svg t="1742795629672" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3113" width="20" height="20"><path d="M928 128h-117.333333v-21.333333a21.333333 21.333333 0 0 0-42.666667 0v21.333333H554.666667v-21.333333a21.333333 21.333333 0 0 0-42.666667 0v21.333333H298.666667v-21.333333a21.333333 21.333333 0 0 0-42.666667 0v21.333333H138.666667a53.393333 53.393333 0 0 0-53.333334 53.333333v704a53.393333 53.393333 0 0 0 53.333334 53.333334h789.333333a53.393333 53.393333 0 0 0 53.333333-53.333334V181.333333a53.393333 53.393333 0 0 0-53.333333-53.333333zM138.666667 170.666667h117.333333v21.333333a21.333333 21.333333 0 0 0 42.666667 0v-21.333333h213.333333v21.333333a21.333333 21.333333 0 0 0 42.666667 0v-21.333333h213.333333v21.333333a21.333333 21.333333 0 0 0 42.666667 0v-21.333333h117.333333a10.666667 10.666667 0 0 1 10.666667 10.666666v160H128V181.333333a10.666667 10.666667 0 0 1 10.666667-10.666666z m789.333333 725.333333H138.666667a10.666667 10.666667 0 0 1-10.666667-10.666667V384h810.666667v501.333333a10.666667 10.666667 0 0 1-10.666667 10.666667zM384 490.666667a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m128 128a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m0 128a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334zM384 618.666667a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334zM256 490.666667a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m0 256a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m0-128a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m256-128a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m-128 256a21.333333 21.333333 0 1 1-21.333333-21.333334 21.333333 21.333333 0 0 1 21.333333 21.333334z m298.666667-256a21.333333 21.333333 0 0 1-21.333334 21.333333h-42.666666a21.333333 21.333333 0 0 1 0-42.666667h42.666666a21.333333 21.333333 0 0 1 21.333334 21.333334z m170.666666 0a21.333333 21.333333 0 0 1-21.333333 21.333333h-42.666667a21.333333 21.333333 0 0 1 0-42.666667h42.666667a21.333333 21.333333 0 0 1 21.333333 21.333334z m0 128a21.333333 21.333333 0 0 1-21.333333 21.333333h-42.666667a21.333333 21.333333 0 0 1 0-42.666667h42.666667a21.333333 21.333333 0 0 1 21.333333 21.333334z m-170.666666 0a21.333333 21.333333 0 0 1-21.333334 21.333333h-42.666666a21.333333 21.333333 0 0 1 0-42.666667h42.666666a21.333333 21.333333 0 0 1 21.333334 21.333334z m0 128a21.333333 21.333333 0 0 1-21.333334 21.333333h-42.666666a21.333333 21.333333 0 0 1 0-42.666667h42.666666a21.333333 21.333333 0 0 1 21.333334 21.333334z" fill="#909399" p-id="3114"></path></svg> {{ item.releaseTime }}</span>
+          <span v-if="item.tag.length !== 0"><svg t="1742796856061" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15874" width="20" height="20"><path d="M362 312h300v60H362z" fill="#909399" p-id="15875"></path><path d="M772 162H212v699.999l60-34.641 240-150.111 240 150.111L812 862V162h-40zM572 642.607l-60-34.641-60 34.641-180 115.47V222h480v536.076L572 642.607z" fill="#909399" p-id="15876"></path></svg><label v-for="name in item.tag" :key="name">{{ name }}</label></span>
 
         </div>
       </div>
     </div>
 
-    <div class="page">
-      <el-pagination
-      background
-      layout="prev, pager, next,total"
-      v-model:current-page="state.pageNumber"
-      v-model:page-size="state.pageSize"
-      :page-size="state.pageSize"
-      @update:current-page="handleChange"
-      @size-change="handleSizeChange"
-      :total = total
-      />
+    <div class="page" >
+      <el-config-provider  :locale="language">
+        <el-pagination
+            background
+            layout="prev, pager, next,total"
+            v-model:current-page="state.pageNumber"
+            v-model:page-size="state.pageSize"
+            :page-size="state.pageSize"
+            @update:current-page="handleChange"
+            @size-change="handleSizeChange"
+            :total = total
+            />
+      </el-config-provider>
+     
     </div>
     <!-- <img v-draggable src="http://lejibiji.cn:8081/uploads/ced5ab49-ab07-4fe5-91c6-adbac2cc5e19-avatar.jpg"/> -->
     <div>
@@ -33,11 +36,13 @@
     </div>
     
   </div>
-  <!-- <Aside @updateValue="getCategoryName" /> -->
+
+
 </template>
 
 <script setup>
   import {ref,reactive,onMounted,toRefs,inject,watch} from 'vue';
+  import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
   import Aside from '@/components/aside.vue';
   import axios from '@/utils';
   import {useRouter,useRoute} from 'vue-router';
@@ -45,6 +50,7 @@
   const route = useRoute();
   const load = ref(false);
   const query = ref(route.query.name);
+  const language = ref(zhCn)
   const state = reactive({
     pageNumber:1,
     pageSize:12,
@@ -175,19 +181,18 @@
           span{
             display:inline-flex;
             align-items:center;
-            .el-icon{
-              font-size:20px;
-            }
-            &:last-child{
-              margin-left:12px
-            }
+            
             label{
               display:inline-block;
-              margin:0 2px;
               cursor: pointer;
+              margin-right:2px;
               &:hover{
                 color:#003dbb;
               }
+            }
+            .icon{
+              display:inline-block;
+              margin:0 6px;
             }
           }
         }

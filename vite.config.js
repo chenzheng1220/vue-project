@@ -4,9 +4,11 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 //配置组件路径别名需引入resolve
 import{resolve} from 'path'
-import AutoImport from 'unplugin-auto-import/vite'
+//npm i unplugin-vue-components unplugin-auto-import -D 
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
 //npm i vite-plugin-compression -D 安装插件
 import viteCompression from 'vite-plugin-compression'
 // https://vitejs.dev/config/
@@ -14,11 +16,10 @@ export default defineConfig({
   plugins: [
     //
     vue(),
-
-    AutoImport({
+    Components({
       resolvers: [ElementPlusResolver()],
     }),
-    Components({
+    AutoImport({
       resolvers: [ElementPlusResolver()],
     }),
     //代码压缩
@@ -52,6 +53,7 @@ export default defineConfig({
        },
      },
   },
+
   optimizeDeps: {
     esbuildOptions: {
       plugins: []

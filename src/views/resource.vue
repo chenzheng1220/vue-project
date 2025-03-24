@@ -3,28 +3,28 @@
         <div class="item">
             <h2>学习文档</h2>
             <div class="wrap">
-                <a v-for="(item,index) in list1" :href="item.url" target="_blank">{{ item.name }}</a>
+                <a v-for="item in list1" :key="item.id" :href="item.url" target="_blank">{{ item.name }}</a>
             </div>
         </div>
 
         <div class="item">
             <h2>在线工具</h2>
             <div class="wrap">
-                <a v-for="(item,index) in list2" :href="item.url" target="_blank">{{ item.name }}</a>
+                <a v-for="item in list2" :key="item.id" :href="item.url" target="_blank">{{ item.name }}</a>
             </div>
         </div>
 
         <div class="item">
             <h2>资源下载</h2>
             <div class="wrap">
-                <a v-for="(item,index) in list3" :href="item.url" target="_blank">{{ item.name }}</a>
+                <a v-for="item in list3" :key="item.id" :href="item.url" target="_blank">{{ item.name }}</a>
             </div>
         </div>
 
         <div class="item">
             <h2>技术博主</h2>
             <div class="wrap">
-                <a v-for="(item,index) in list4" :href="item.url" target="_blank">{{ item.name }}</a>
+                <a v-for="item in list4" :key="item.id" :href="item.url" target="_blank">{{ item.name }}</a>
             </div>
         </div>
     </div>

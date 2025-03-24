@@ -2,7 +2,7 @@
 
     <aside>
         <div class="setting" v-loading="load">
-            <img class="avatar" :src="settings.avatar"/>
+            <img class="avatar" :src="settings.avatar" alt="头像"/>
             <h2 class="author">{{ settings.author }}</h2>
             <p class="introduction">{{ settings.introduction }}</p>
             <div class="total">
@@ -26,7 +26,7 @@
         <div class="category" :class="!isShow ? 'isSticky':''">
             <h2><el-icon><FolderOpened /></el-icon>文章分类</h2>
             <div class="box">
-                <div class="item" v-for="(item,index) in categoryList" v-track="{type:'文章分类',target:item.name}" @click="handleClick(item)"><span>{{ item.name }}</span><span>{{ item.value }}</span></div>
+                <div class="item" v-for="item in categoryList" :key="item.name" v-track="{type:'文章分类',target:item.name}" @click="handleClick(item)"><span>{{ item.name }}</span><span>{{ item.value }}</span></div>
             </div>
         </div>
 

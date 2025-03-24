@@ -38,7 +38,7 @@
 
         <div class="commentsList">
             <h2  v-if="total">本篇文章共有 {{total}} 条评论</h2>
-            <div class="item" v-for="(item,index) in commentsList">
+            <div class="item" v-for="(item,index) in commentsList" :key="index">
                 <p class="nickname"><img :src="item.avatar" />{{ item.nickname }}</p>
                 <p class="contentBox">{{ item.content }}</p>
                 <p class="date">{{ item.date }}</p>

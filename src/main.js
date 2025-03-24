@@ -3,18 +3,18 @@ import './assets/fonts/index.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 // import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
+// import 'element-plus/dist/index.css';
 // import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import App from './App.vue'
 import router from './router'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+//import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import visitors from '@/utils/visitors'
 import { appDirective } from './utils/track';
 const app = createApp(App);
 appDirective(app);
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
+// for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+//   app.component(key, component)
+// }
 
 // app.use(ElementPlus,{
 //   locale: zhCn

@@ -1,9 +1,9 @@
 <template>
     <div class="file" v-loading="load">
-        <div class="item" :index="item.date" v-for="(item,index) in list">
+        <div class="item" :index="item.date" v-for="item in list" :key="item.date">
             <h2>{{ item.date }}</h2>
             <div class="wrap">
-                <p v-for="obj in item.articles" :index="obj.id" @click="goToArticle(obj.id)"><span>{{ obj.title }}</span> <span>[{{ obj.releaseTime }}]</span></p>
+                <p v-for="obj in item.articles" :key="obj.id" @click="goToArticle(obj.id)"><span>{{ obj.title }}</span> <span>[{{ obj.releaseTime }}]</span></p>
             </div>
         </div>
     </div>
