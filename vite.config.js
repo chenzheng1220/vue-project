@@ -36,11 +36,11 @@ export default defineConfig({
     target: 'esnext',
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return id.toString().split('node_modules/')[1].split('/')[0].toString();
-          }
-        }
+        // manualChunks(id) {
+        //   if (id.includes('node_modules')) {
+        //     return id.toString().split('node_modules/')[1].split('/')[0].toString();
+        //   }
+        // }
       }
     },
      //默认是esbuild,但这里需要改成terser，并且想使用terser的话，需提前安装，命令为npm add -D terser
@@ -71,6 +71,7 @@ export default defineConfig({
   //配置根路径，解决部署到服务器之后绝对路径会报404问题，所以需改为相对路径
   base:'./',
   server: {
+    open:true,
     proxy: {
       '/api': {
         target: 'http://lejibiji.cn:8081', // 目标服务器地址
