@@ -16,11 +16,14 @@
   </div>
 </template>
 <script setup>
+import {ref,reactive,onMounted} from 'vue';
 import { RouterLink, RouterView} from 'vue-router';
 import Header from './components/header.vue';
 import Aside from './components/aside.vue';
 import Footer from './components/footer.vue';
-
+onMounted(() => {
+ 
+})
 </script>
 <style lang="scss">
 
