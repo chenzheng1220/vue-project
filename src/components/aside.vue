@@ -101,8 +101,7 @@
         padding-left:12px;
         >div{
             min-height:300px;
-            border:1px solid #EBEDF0;
-            box-shadow:0 0 2px #EBEDF0;
+            box-shadow:0 0 2px #ffffff;
             border-radius:6px;
             padding:24px;
             background-color:#ffffff;
@@ -199,8 +198,8 @@
                     height: 42px;
                     margin: 6px 4px;
                     padding:0 12px;
-                    border: 1px solid #EBEDF0;
-                    box-shadow: 0 0 2px #EBEDF0;
+                    border: 1px solid #eef0fc;
+                    box-shadow: 0 0 2px #eef0fc;
                     border-radius:4px;
                     cursor:pointer;
                     transition:all .5s;

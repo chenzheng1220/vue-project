@@ -35,12 +35,21 @@ const route = useRoute();
 const load = ref(false);
 const article = ref({});
 const getArticle = async(id) => {
+   try{
     load.value = true;
-    await axios.get(`/getArticle?id=${id}`).then(res => {
-        load.value = false;
-        article.value = res.data.data;
-        mdEditor.value = res.data.data.content;
-    })
+    const res = await axios.get(`/getArticle?id=${id}`);
+    article.value = res.data.data;
+    mdEditor.value = res.data.data.content;
+   }catch(err){
+    ElMessage({
+        type:'error',
+        message:err.response.data.msg || '获取文章失败!' 
+        })
+   }finally{
+    load.value = false;
+   }
+     
+   
 }
 onMounted(async() => {
     
@@ -56,8 +65,8 @@ onMounted(async() => {
     width:100%;
     overflow:hidden;
     >.item{
-        border: 1px solid #EBEDF0;
-        box-shadow: 0 0 2px #EBEDF0;
+      
+        box-shadow: 0 0 2px #ffffff;
         border-radius: 6px;
         padding:0 30px;
         background-color:#ffffff;

@@ -110,8 +110,7 @@
       margin:0 auto 12px;
       height:150px;
       display:flex;
-      border: 1px solid #EBEDF0;
-      box-shadow: 0 0 2px #EBEDF0;
+      box-shadow: 0 0 2px #ffffff;
       border-radius:6px;
       padding: 12px 12px 12px 6px;
       background-color:#ffffff;

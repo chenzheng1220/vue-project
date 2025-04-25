@@ -76,7 +76,7 @@ onMounted(async() => {
     .resource{
         width:100%;
         .item{
-            border: 1px solid #EBEDF0;
+            box-shadow: 0 0 2px #ffffff;
             padding:12px;
             margin:0 0 12px;
             background-color:#ffffff;
@@ -96,8 +96,8 @@ onMounted(async() => {
                     width: 150px;
                     height: 42px;
                     margin: 12px;
-                    border: 1px solid #EBEDF0;
-                    box-shadow: 0 0 2px #EBEDF0;
+                    border: 1px solid #eef0fc;
+                    box-shadow: 0 0 2px #eef0fc;
                     border-radius: 4px;
                     transition:all .6s;
                     color:#2c3e50;

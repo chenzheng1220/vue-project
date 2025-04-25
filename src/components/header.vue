@@ -77,8 +77,7 @@ header{
    top:0;
    width:100%;
    background-color:#ffffff;
-   border-bottom: 1px solid #EBEDF0;
-   box-shadow: 0 0 2px #EBEDF0;
+   box-shadow: 0 0 2px #ffffff;
    .header-wrap{
     width:1200px;
     height:68px;

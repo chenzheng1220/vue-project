@@ -16,9 +16,7 @@
         display:flex;
         justify-content:center;
         align-items:center;
-        border-top: 1px solid #EBEDF0;
-        border-bottom: 1px solid #EBEDF0;
-        box-shadow: 0 0 2px #EBEDF0;
+        box-shadow: 0 0 2px #ffffff;
         background-color:#ffffff;
         >a{
             display:block;

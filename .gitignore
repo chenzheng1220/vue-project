@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules
 .DS_Store
 dist
+dist.zip
+dist.tar.gz
+dist.tar.bz2
 dist-ssr
 coverage
 *.local
