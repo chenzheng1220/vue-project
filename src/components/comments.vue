@@ -119,8 +119,8 @@ onMounted(() => {
             padding:12px 0;
             border-bottom:1px dashed #dcdfe6;
             .nickname{
-                font-size:22px;
-                font-family: "kt",'楷体','KaiTi','STKaiti';
+                font-size:18px;
+                font-family:'楷体','KaiTi','STKaiti';
                 font-weight:bold;
                 >img{
                     display:inline-block;

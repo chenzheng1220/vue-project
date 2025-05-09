@@ -53,12 +53,6 @@ export default defineConfig({
        },
      },
   },
-
-  optimizeDeps: {
-    esbuildOptions: {
-      plugins: []
-    }
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
