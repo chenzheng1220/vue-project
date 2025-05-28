@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { visualizer } from "rollup-plugin-visualizer";
 //配置组件路径别名需引入resolve
 import{resolve} from 'path'
 //npm i unplugin-vue-components unplugin-auto-import -D 
@@ -31,18 +32,16 @@ export default defineConfig({
       ext: '.gz', // 生成的压缩包后缀
       deleteOriginFile: false //压缩后是否删除源文件
     }),
+    visualizer({
+      open: true, // 自动打开浏览器
+      template: "treemap", // 图形类型：sunburst|treemap|network
+      filename: "stats.html", // 输出文件名
+      gzipSize: true, // 显示gzip后大小
+      brotliSize: true // 显示brotli压缩后大小
+    })
   ],
   build: {
     target: 'esnext',
-    rollupOptions: {
-      output: {
-        // manualChunks(id) {
-        //   if (id.includes('node_modules')) {
-        //     return id.toString().split('node_modules/')[1].split('/')[0].toString();
-        //   }
-        // }
-      }
-    },
      //默认是esbuild,但这里需要改成terser，并且想使用terser的话，需提前安装，命令为npm add -D terser
      minify:'terser',
      terserOptions: {
