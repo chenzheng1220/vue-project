@@ -24,6 +24,7 @@ onMounted(async() => {
 <style lang="scss">
     .about{
         width:100%;
+        min-height:100vh;
         background-color:#ffffff;
         padding:0 30px 50px;
         h3{

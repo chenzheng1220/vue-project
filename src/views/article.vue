@@ -63,17 +63,22 @@ onMounted(async() => {
 .article{
     max-width:900px;
     width:100%;
+    min-height:100vh;
     overflow:hidden;
     >.item{
-      
         box-shadow: 0 0 2px #ffffff;
         border-radius: 6px;
         padding:0 30px;
         background-color:#ffffff;
         margin:0 0 12px;
     }
+    .text{
+        width:100%;
+        min-height:60vh;
+    }
     .article-head{
         width:100%;
+        min-height:120px;
         padding:20px;
         text-align:center;
         .title{

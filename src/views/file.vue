@@ -35,6 +35,7 @@ onMounted(async() => {
 <style lang="scss">
     .file{
         width:100%;
+        min-height:100vh;
         background-color: #ffffff;
         padding:30px;
         .item{

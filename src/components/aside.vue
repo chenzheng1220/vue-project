@@ -100,6 +100,7 @@
         width:300px;
         padding-left:12px;
         >div{
+            min-width:288px;
             min-height:300px;
             box-shadow:0 0 2px #ffffff;
             border-radius:6px;
@@ -119,6 +120,8 @@
                 background-color:#c6c6c6;
             }
             .author{
+                width:100%;
+                height:32px;
                 text-align: center;
                 font-weight: normal;
                 font-size: 24px;
@@ -126,11 +129,14 @@
                 margin:12px auto;
             }
             .introduction{
+                width:100%;
+                height:64px;
                 text-align:center;
                 font-size:20px;
             }
             .total{
                 width:100%;
+                height:64px;
                 display:flex;
                 justify-content: space-around;
                 margin:12px auto;

@@ -1,5 +1,11 @@
 <template>
-  <div class="index" v-loading="load">
+  <div class="index">
+    <div class="skeleton-container" v-if="loading">
+      <div class="item skeleton-item" v-for="i in 12" :key="i">
+      </div>
+  </div>
+   
+  <div class="skeleton-container" else>
     <div class="item" v-for="item in articleList" :key="item.id" v-track="{type:'图文列表',target:item.title}" @click="goToArticle(item)">
       <div class="artCover">
         <img v-lazyload="item.articleCover" src="" width="120px" height="120px" alt="articleCover" />
@@ -14,6 +20,7 @@
         </div>
       </div>
     </div>
+  </div>
 
     <div class="page" >
       <el-config-provider  :locale="language">
@@ -48,7 +55,7 @@
   import {useRouter,useRoute} from 'vue-router';
   const router = useRouter();
   const route = useRoute();
-  const load = ref(false);
+  const loading = ref(true);
   const query = ref(route.query.name);
   const language = ref(zhCn)
   const state = reactive({
@@ -69,9 +76,9 @@
     await getArticleList();
   }
   const getArticleList = async() => {
-    load.value = true;
+    loading.value = true;
     await axios.post('/getArticleList',state).then(res => {
-      load.value = false;
+      loading.value = false;
       articleList.value = res.data.list;
       total.value = res.data.totalNum;
     });
@@ -105,6 +112,12 @@
 <style lang="scss">
   .index{
     width:100%;
+    min-height:100vh;
+    .skeleton-item{
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite ;
+    }
     .item{
       width:100%;
       margin:0 auto 12px;
@@ -242,4 +255,10 @@
       }
     }
   }
+
+  
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
 </style>

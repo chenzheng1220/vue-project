@@ -75,7 +75,10 @@ onMounted(async() => {
 <style lang="scss">
     .resource{
         width:100%;
+        min-height:600px;
         .item{
+            width:100%;
+            min-height:122px;
             box-shadow: 0 0 2px #ffffff;
             padding:12px;
             margin:0 0 12px;
