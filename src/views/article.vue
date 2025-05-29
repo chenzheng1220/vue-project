@@ -27,9 +27,11 @@ import Comments from '@/components/comments.vue';
 import {ref,onMounted} from 'vue';
 import {useRoute} from 'vue-router';
 import axios from '@/utils';
+
 import { MdPreview} from 'md-editor-v3';
 import 'md-editor-v3/lib/preview.css';
 const id = 'preview-only';
+
 const mdEditor = ref('');
 const route = useRoute();
 const load = ref(false);
@@ -90,7 +92,7 @@ onMounted(async() => {
         }
         .tag{
             width:100%;
-            color:#909399;
+            color:#606266;
             margin:12px 0 0;
             span{
                 display:inline-flex;
@@ -112,17 +114,20 @@ onMounted(async() => {
     }
    
     .text{
+       
         h2{
             font-size:24px;
             font-weight: bold;
             margin:12px 0;
             font-family:'楷体','KaiTi','STKaiti';
+            color:#222222;
         }
         h3{
             font-size:22px;
             font-weight:bold;
             margin:6px 0; 
             font-family:'楷体','KaiTi','STKaiti';
+            color:#222222;
         }
         p{
             font-size:16px;
@@ -130,6 +135,7 @@ onMounted(async() => {
             text-indent:2em;
             text-align: justify;
             margin:0 0 12px;
+            color:#222222;
         }
         img{
             display:block;

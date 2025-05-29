@@ -37,7 +37,6 @@
       </el-config-provider>
      
     </div>
-    <!-- <img v-draggable src="http://lejibiji.cn:8081/uploads/ced5ab49-ab07-4fe5-91c6-adbac2cc5e19-avatar.jpg"/> -->
     <div>
       
     </div>
@@ -85,6 +84,7 @@
   }
 
   const getCategoryName = async(val) => {
+    state.pageNumber = 1; //重置当前页码为1
     state.keyword = val || '';
     await getArticleList();
   }
@@ -185,11 +185,11 @@
           -webkit-box-orient:vertical;
           font-size:16px;
           line-height:1.6em;
-          color:#606266;
+         
         }
         .tag{
           width:100%;
-          color:#909399;
+          color:#606266;
           span{
             display:inline-flex;
             align-items:center;

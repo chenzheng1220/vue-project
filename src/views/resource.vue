@@ -96,7 +96,8 @@ onMounted(async() => {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 150px;
+                    min-width: 150px;
+                    width:calc(20% - 24px); // 减去两个边距和两个边框的宽度
                     height: 42px;
                     margin: 12px;
                     border: 1px solid #eef0fc;
@@ -120,6 +121,7 @@ onMounted(async() => {
             }
             .wrap{
                 >a{
+                    width:calc(50% - 12px); // 减去两个边距和两个边框的宽度
                     margin:6px;
                     font-size:14px;
                 }
