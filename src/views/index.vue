@@ -21,8 +21,9 @@
       </div>
     </div>
   </div>
+   
 
-    <div class="page" >
+    <div class="page" v-if="total">
       <el-config-provider  :locale="language">
         <el-pagination
             background
@@ -35,7 +36,9 @@
             :total = total
             />
       </el-config-provider>
-     
+    </div>
+    <div v-if="total === 0" class="noDate">
+      敬请期待！
     </div>
     <div>
       
@@ -215,6 +218,16 @@
       justify-content: center;
       margin:30px auto;
     }
+    .noDate{
+      width:100%;
+      height:calc(100vh - 68px);
+      display:flex; 
+      justify-content: center;
+      align-items:center;
+      font-size:24px;
+      background-color:#ffffff;
+      letter-spacing: 1px;
+    }
   }
   .el-icon{
     padding:0 2px 0 0;
@@ -260,5 +273,9 @@
 @keyframes loading {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+.el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li {
+    background-color: #ffffff;
 }
 </style>

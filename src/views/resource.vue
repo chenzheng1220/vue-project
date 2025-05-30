@@ -80,26 +80,25 @@ onMounted(async() => {
             width:100%;
             min-height:122px;
             box-shadow: 0 0 2px #ffffff;
-            padding:12px;
+            padding:12px 30px;
             margin:0 0 12px;
             background-color:#ffffff;
             >h2{
                 font-size:22px;
                 font-family: "kt";
+                margin:0 auto 12px;
             }
             .wrap{
                 width:100%;
-                display:flex;
-                flex-wrap:wrap;
-
+                display:grid;
+                grid-template-columns:repeat(5,1fr);
+                gap:12px;
                 >a{
+                    box-sizing: border-box;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    min-width: 150px;
-                    width:calc(20% - 24px); // 减去两个边距和两个边框的宽度
                     height: 42px;
-                    margin: 12px;
                     border: 1px solid #eef0fc;
                     box-shadow: 0 0 2px #eef0fc;
                     border-radius: 4px;
@@ -120,9 +119,8 @@ onMounted(async() => {
                 font-size:16px;
             }
             .wrap{
+                grid-template-columns:repeat(2,1fr);
                 >a{
-                    width:calc(50% - 12px); // 减去两个边距和两个边框的宽度
-                    margin:6px;
                     font-size:14px;
                 }
             }
