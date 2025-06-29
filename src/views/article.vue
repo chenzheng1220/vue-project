@@ -114,28 +114,28 @@ onMounted(async() => {
     }
    
     .text{
-       
+        color:#222;
         h2{
             font-size:24px;
             font-weight: bold;
             margin:12px 0;
             font-family:'楷体','KaiTi','STKaiti';
-            color:#222222;
+           
         }
         h3{
             font-size:22px;
             font-weight:bold;
             margin:6px 0; 
             font-family:'楷体','KaiTi','STKaiti';
-            color:#222222;
+          
         }
         p{
             font-size:16px;
             line-height:2em;
             text-indent:2em;
             text-align: justify;
-            margin:0 0 12px;
-            color:#222222;
+            margin:0 0 6px;
+          
         }
         img{
             display:block;

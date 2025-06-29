@@ -156,30 +156,21 @@
                 border-radius: 6px;
                 letter-spacing: 2px;
                 color:#ffffff;
-                animation:changeColor 6s linear infinite;
+                animation:enter 3s ease-in-out infinite;
                 font-size:20px;
                 font-family: 'kt';
+                background-image:linear-gradient(to right, #0053ff 0%, #05369c 100%);
             }
-            @keyframes changeColor {
-                0%{
-                    background:linear-gradient(to right,red,orange);
-                }
-                20%{
-                    background:linear-gradient(to right,orange,yellow);
-                }
-                40%{
-                    background:linear-gradient(to right,yellow,green);
-                }
-                60%{
-                    background:linear-gradient(to right,green,cyan);
-                }
-                80%{
-                    background:linear-gradient(to right,cyan,blue);
-                }
-                100%{
-                    background:linear-gradient(to right,blue,purple);
+            @keyframes enter{
+                0%,100%{
+                    transform:scale(1);
+                    opacity:1;
+                }50%{
+                    transform:scale(0.9);
+                    opacity:0.7;
                 }
             }
+          
         }
         .category{
             width:100%;

@@ -40,7 +40,7 @@ onMounted(async() => {
         padding:30px;
         .item{
             width:100%;
-            margin:0 auto 30px;
+            margin:0 auto 12px;
             >h2{
                 font-size:22px;
                 font-family: "kt";  
@@ -48,7 +48,7 @@ onMounted(async() => {
            .wrap{
             width:100%;
             >p{
-                margin:0 0 12px;
+                margin:0 0 6px;
                 span{
                     &:first-child{
                         text-decoration: underline;
