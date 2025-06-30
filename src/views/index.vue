@@ -62,7 +62,7 @@
   const language = ref(zhCn)
   const state = reactive({
     pageNumber:1,
-    pageSize:12,
+    pageSize:7,
     keyword:''
   })
   const total = ref(0);

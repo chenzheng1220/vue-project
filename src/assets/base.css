@@ -58,7 +58,6 @@
 }
 
 body {
-  min-height: 100vh;
   color: #222222;
   background-color: #eef0fc;
   transition:

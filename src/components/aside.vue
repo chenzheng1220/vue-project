@@ -96,9 +96,7 @@
 
 <style lang="scss">
     aside{
-        box-sizing:border-box;
-        width:300px;
-        padding-left:12px;
+        width:100%;
         >div{
             min-width:288px;
             min-height:300px;
