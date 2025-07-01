@@ -62,7 +62,7 @@
   const language = ref(zhCn)
   const state = reactive({
     pageNumber:1,
-    pageSize:7,
+    pageSize:12,
     keyword:''
   })
   const total = ref(0);
@@ -115,7 +115,6 @@
 <style lang="scss">
   .index{
     width:100%;
-    min-height:100vh;
     .skeleton-item{
       background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
       background-size: 200% 100%;

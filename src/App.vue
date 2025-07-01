@@ -30,12 +30,13 @@ import Footer from './components/footer.vue';
   width:100%;
   .content{
     width:1200px;
-    min-height:1150px;
+    min-height:100vh;
     display:flex;
+    justify-content: space-between;
     margin:12px auto;
-    overflow:hidden;
    .showBox{
     flex:1;
+
     
    }
    .menuBox{

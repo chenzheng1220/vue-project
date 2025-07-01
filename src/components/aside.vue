@@ -67,9 +67,11 @@
         router.push({path:'/index',query:{name:val.name}});
     }
 
+
     watch(() => route.path,(newVal) => {
         newVal === '/article' ? isShow.value = true : isShow.value = false;
     })
+
     
     onMounted(() => {
        
@@ -97,6 +99,7 @@
 <style lang="scss">
     aside{
         width:100%;
+        height:100%;
         >div{
             min-width:288px;
             min-height:300px;
