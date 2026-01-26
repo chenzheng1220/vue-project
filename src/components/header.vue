@@ -7,7 +7,7 @@
           <span style="--i:2">记</span>
           <span style="--i:3">笔</span>
           <span style="--i:4">记</span>
-           <span style="--i:5">!</span>
+         
         </div>
         <nav v-if="isMobile">
             <div class="box" @click="toggleClass" :class="isShow ? 'act' : ''">
