@@ -23,6 +23,7 @@ import Header from './components/header.vue';
 import Aside from './components/aside.vue';
 import Footer from './components/footer.vue';
 
+
 </script>
 <style lang="scss">
 
