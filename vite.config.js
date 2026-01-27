@@ -62,7 +62,7 @@ export default defineConfig({
     }
   },
   //配置根路径，解决部署到服务器之后绝对路径会报404问题，所以需改为相对路径
-  base:'./',
+  base:'/vue-project/',
   server: {
     open:true,
     proxy: {
