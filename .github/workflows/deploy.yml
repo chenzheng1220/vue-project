@@ -17,19 +17,19 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
         run: npm run build
 
-      # - name: Deploy to server
-      #   uses: appleboy/scp-action@v1.0.0
-      #   with:
-      #     host: ${{ secrets.SERVER_IP }}
-      #     username: ${{ secrets.SSH_USERNAME }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     port: ${{ secrets.SSH_PORT || '22' }}
-      #     source: dist/
-      #     target: /www/server/nginx/html/
-      #     strip_components: 1  # 自动移除 dist 目录层级
-      #     overwrite: true  # 覆盖目标目录下的文件
+      - name:  Rsync Deploy
+        uses: wangyucode/sftp-upload-action@v1.1
+        with:
+       
+          host: ${{ secrets.SERVER_IP }}
+          port: ${{ secrets.SSH_PORT || '22' }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          localDir: "dist" #你vue项目build好的文件的路径,每次服务器上会自动删除对应的文件夹后重新覆盖
+          remoteDir: "/www/server/nginx/html/" #你要把你build好的文件夹放到nginx服务器上的什么位置，一般都是nginx配置的站点路径
+
