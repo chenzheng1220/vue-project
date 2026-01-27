@@ -32,5 +32,4 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           localDir: "dist" #
           remoteDir: "/www/server/nginx/html/vue-project" #你要把你build好的文件夹放到nginx服务器上的什么位置，一般都是nginx配置的站点路径
-          delete: false #是否删除remoteDir目录下不存在于localDir目录中的文件
 
