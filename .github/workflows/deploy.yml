@@ -22,13 +22,24 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Rsync dist to remote
-        uses: burnett01/rsync-deployments@7.0.1
+      # - name: Rsync dist to remote
+      #   uses: burnett01/rsync-deployments@7.0.1
+      #   with:
+      #   switches: -avz --checksum  # 添加校验和验证 
+      #   path: dist/
+      #   remote_path: /www/server/nginx/html/
+      #   remote_host: ${{ secrets.SERVER_IP }}
+      #   remote_user: ${{ secrets.SSH_USERNAME }}
+      #   remote_key: ${{ secrets.SSH_PRIVATE_KEY }}  # 更安全的密钥认证
+
+      - name: Rsync dist to remote (deploy)
+        uses: burnett01/rsync-deployments@v7
         with:
-        switches: -avz --checksum  # 添加校验和验证 
-        path: dist/
-        remote_path: /www/server/nginx/html/
-        remote_host: ${{ secrets.SERVER_IP }}
-        remote_user: ${{ secrets.SSH_USERNAME }}
-        remote_key: ${{ secrets.SSH_PRIVATE_KEY }}  # 更安全的密钥认证
+          switches: -avz --checksum --delete     # 正式部署：去掉 -n（dry-run）
+          path: dist/
+          remote_path: /www/server/nginx/html/
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # remote_port: 22
         
