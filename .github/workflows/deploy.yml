@@ -41,5 +41,5 @@ jobs:
           remote_host: ${{ secrets.SERVER_IP }}
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # remote_port: 22
+          remote_port: 22
         
