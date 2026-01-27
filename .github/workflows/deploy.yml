@@ -1,12 +1,14 @@
+name: Deploy to Nginx
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -17,39 +19,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build project
         run: npm run build
 
-      - name: Show dist for debug
-        run: ls -la dist || true
-
-      - name: Start ssh-agent and add private key
-        uses: webfactory/ssh-agent@v0.8.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: Add server to known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p "${{ secrets.SSH_PORT || '22' }}" -H "${{ secrets.SERVER_IP }}" >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection (quick)
-        env:
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT || '22' }}
-        run: |
-          # 不暴露私钥内容，仅测试能否通过公钥认证
-          ssh -o BatchMode=yes -p "$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" "echo SSH_OK" || (ssh -v -o BatchMode=yes -p "$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" "echo SSH_OK" && true)
-
-      - name: Rsync dist to remote
-        env:
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT || '22' }}
-          REMOTE_PATH: /www/server/nginx/html/
-        run: |
-          ssh -p "$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" "mkdir -p $REMOTE_PATH"
-          rsync -avz --delete -e "ssh -p $REMOTE_PORT" ./dist/ "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH"
-          # 可选：重载 nginx（需 deploy 用户有 sudo 权限）
-          # ssh -p "$REMOTE_PORT" "$REMOTE_USER@$REMOTE_HOST" "sudo systemctl reload nginx || true"
+      # - name: Deploy to server
+      #   uses: appleboy/scp-action@v1.0.0
+      #   with:
+      #     host: ${{ secrets.SERVER_IP }}
+      #     username: ${{ secrets.SSH_USERNAME }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     port: ${{ secrets.SSH_PORT || '22' }}
+      #     source: dist/
+      #     target: /www/server/nginx/html/
+      #     strip_components: 1  # 自动移除 dist 目录层级
+      #     overwrite: true  # 覆盖目标目录下的文件
