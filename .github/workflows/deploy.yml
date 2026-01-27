@@ -28,5 +28,6 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: dist/*
+          source: dist/
           target: /www/server/nginx/html/
+          strip_components: 1  # 自动移除 dist 目录层级
