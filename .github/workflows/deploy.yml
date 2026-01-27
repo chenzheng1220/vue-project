@@ -33,7 +33,7 @@ jobs:
       #   remote_key: ${{ secrets.SSH_PRIVATE_KEY }}  # 更安全的密钥认证
 
       - name: Rsync dist to remote (deploy)
-        uses: burnett01/rsync-deployments@v7
+        uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avz --checksum --delete     # 正式部署：去掉 -n（dry-run）
           path: dist/
