@@ -30,6 +30,7 @@ jobs:
           port: ${{ secrets.SSH_PORT || '22' }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          localDir: "dist" #你vue项目build好的文件的路径,每次服务器上会自动删除对应的文件夹后重新覆盖
+          localDir: "dist/*" #你vue项目build好的文件的路径,每次服务器上会自动删除对应的文件夹后重新覆盖
           remoteDir: "/www/server/nginx/html" #你要把你build好的文件夹放到nginx服务器上的什么位置，一般都是nginx配置的站点路径
+          delete: false #是否删除remoteDir目录下不存在于localDir目录中的文件
 
