@@ -25,7 +25,7 @@ jobs:
       - name: Rsync dist to remote (deploy)
         uses: burnett01/rsync-deployments@7.0.1
         with:
-          switches: -avz --checksum --delete     # 正式部署：去掉 -n（dry-run）
+          switches: -avz --checksum
           path: dist/
           remote_path: /www/server/nginx/html/
           remote_host: ${{ secrets.SERVER_IP }}
