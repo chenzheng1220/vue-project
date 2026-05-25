@@ -1,6 +1,5 @@
 name: Deploy to Nginx
 # 工作流名称（在 Actions 页面显示的名字）
-
 on:
   push:
     branches: [main]
